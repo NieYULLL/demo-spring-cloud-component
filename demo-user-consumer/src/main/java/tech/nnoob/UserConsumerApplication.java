@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,11 +36,13 @@ public class UserConsumerApplication {
         private final RestTemplate restTemplate;
 
         @Autowired
-        public TestController(RestTemplate restTemplate) {this.restTemplate = restTemplate;}
+        public TestController(RestTemplate restTemplate) {
+            this.restTemplate = restTemplate;
+        }
 
         @RequestMapping(value = "/echo", method = RequestMethod.GET)
         public String echo() {
-            return restTemplate.getForObject("http://user-provider/user/echo/" , String.class);
+            return restTemplate.getForObject("http://user-provider/user/echo/", String.class);
         }
     }
 }
