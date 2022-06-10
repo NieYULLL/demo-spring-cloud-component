@@ -42,6 +42,7 @@ public class UserConsumerApplication {
 
         @RequestMapping(value = "/echo", method = RequestMethod.GET)
         public String echo() {
+            System.out.println("echo client");
             return restTemplate.getForObject("http://user-provider/user/echo/", String.class);
         }
     }
