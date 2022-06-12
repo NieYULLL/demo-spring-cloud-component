@@ -12,6 +12,7 @@
     <modules>
         <module>demo-user-service</module>
         <module>demo-user-consumer</module>
+        <module>demo-dubbo</module>
     </modules>
 
     <parent>
